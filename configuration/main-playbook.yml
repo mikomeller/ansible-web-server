@@ -1,0 +1,40 @@
+---
+- hosts: webservers
+  become: yes # become sudo
+  tasks:
+    - name: update the apt-get of the machine
+      apt:
+        update_cache: yes
+
+    - name: install apache2
+      apt:
+        name: apache2
+        state: present #absent=remove
+      # become_user: miko
+
+# automatise website content https://drive.google.com/file/d/1jQfZOyH9IgdqTqN9QwemNqWkB2e5wUV_/view min 39
+'''  
+  1. option to automatise:
+    - hosts: webservers-red
+      tasks: 
+      - name: change color of background
+        ... 
+    like:
+    # - name: copy index.html to webserver
+    #   copy: 
+    #     src: "index.html"
+    #     dest: "/var/www/html/"
+  
+  2. option to automatise:
+     1. create yml in group_vars/{each-each-of groups}.yml, 
+     2. out of website index.html create jinja template in templates/index.html.j2    
+     like below: 
+''' 
+    - name: copy the template to the webserver
+      template: 
+        src: "index.html.j2"
+
+    - name: restart the apache2 service
+      service: 
+        name: apache2
+        state: restarted
