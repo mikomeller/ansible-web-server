@@ -4,14 +4,14 @@ data "aws_ami" "ubuntu" {
   filter {
     name = "name"
     # values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
-    values = ["ubuntu/images/ubuntu-22.04-LTS-amd64-server-*"]
+    values = [var.aws_ami_name]
   }
 }
 
 data "aws_vpc" "talent_academy" {
   filter {
-    name   = "tag:Name"
-    values = ["main"]
+    name   = "tag:Project"
+    values = ["Talent-Academy"]
   }
 }
 
@@ -20,6 +20,5 @@ data "aws_subnet" "public_subnet_az_a" {
     name   = "tag:Name"
     values = [var.public_subnet_az_a]
   }
-  # id = var.subnet_id
 }
 
