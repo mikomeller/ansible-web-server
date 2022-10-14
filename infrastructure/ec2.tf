@@ -1,4 +1,5 @@
 resource "aws_instance" "web_server" {
+  count = 3
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.web_server.id]
@@ -7,7 +8,7 @@ resource "aws_instance" "web_server" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "web-server"
+    Name = "web-server-${count.index+1}"
   }
 }
 

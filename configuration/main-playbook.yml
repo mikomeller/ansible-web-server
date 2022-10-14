@@ -13,26 +13,28 @@
       # become_user: miko
 
 # automatise website content https://drive.google.com/file/d/1jQfZOyH9IgdqTqN9QwemNqWkB2e5wUV_/view min 39
-'''  
-  1. option to automatise:
-    - hosts: webservers-red
-      tasks: 
-      - name: change color of background
-        ... 
-    like:
-    # - name: copy index.html to webserver
-    #   copy: 
-    #     src: "index.html"
-    #     dest: "/var/www/html/"
+
+  # 1. option to automatise:
+  #   - hosts: webservers-red
+  #     tasks: 
+  #     - name: change color of background
+  #       ... 
+  #   like :
+  #   # - name: copy index.html to webserver
+  #   #   copy: 
+  #   #     src: "index.html"
+  #   #     dest: "/var/www/html/"
   
-  2. option to automatise:
-     1. create yml in group_vars/{each-each-of groups}.yml, 
-     2. out of website index.html create jinja template in templates/index.html.j2    
-     like below: 
-''' 
-    - name: copy the template to the webserver
+  # 2. option to automatise:
+  #    1. create file in group_vars/{variable-groups}.yml, with name exactly the same as each variable-group, 
+  #    2. out of website index.html create jinja template in templates/index.html.j2    
+  #    like below: 
+
+    - name: copy template to webserver
       template: 
         src: "index.html.j2"
+        # j2 file is on the master machine, dest must be html-file
+        dest: "/var/www/html/index.html"
 
     - name: restart the apache2 service
       service: 

@@ -1,18 +1,18 @@
 # webserver groups
-[webservers-red]
-3.66.87.228
+[webservers_red]
+18.192.25.183
 
-[webservers-blue]
-3.70.248.216
+[webservers_blue]
+18.193.70.26
 
-[webservers-yellow]
-3.71.84.109
+[webservers_yellow]
+54.93.169.83
 
 # group of webservers:members
-[webservers:child]
-webservers-red
-webservers-blue
-webservers-yellow
+[webservers:children]
+webservers_red
+webservers_blue
+webservers_yellow
 
 # PRIVATE KEY
 # Username = ubuntu

@@ -1,0 +1,14 @@
+<html>
+    <title> {{title_text}}  </title>
+    <body style = "background-color: {{background_color}};">
+        <h1>Welcome to the {{title_text}} </h1>
+        <h3> {{title_text}}  web server ansible-lab </h3>
+        <div>
+            <ul>
+            {%for p in planets%}
+                <li>  {{ p | upper }} </li>
+            {%endfor%}
+            </ul>
+        </div>
+    </body>
+</html>
